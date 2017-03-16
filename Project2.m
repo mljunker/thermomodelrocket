@@ -1,29 +1,29 @@
-%9327010bd02f
-%Bottle Rocket Trajectory
-%ASEN 2012
-%Created 11/27/16
-%Modified 12/2/16
-%Written by 9327010bd02f
-%1:Purpose
-%Numerically integrating given differential functions in order to determine
-%bottle rocket trajectory, using a verification case to check this
-%integration, determining the parameter most dependended upon, and forming
-%a set of parameters launching a rocket to within 1 m of 85 m
-%Input:
-%none at time of running, Verification case inputs already in code
-%Output:
-%Plots of verification case unaltered and varying with drag
-%coefficient, launch angle, initial air pressure, and initial water volume.
-%Peak height and landing distance of verification case.
-%Change of peak height and landing distance with 10% change in parameters
-%Parameters necessary for 85 m goal
-%4: Assumptions
-%Isentropic flow from bottle throughout file
+% 9327010bd02f
+% Bottle Rocket Trajectory
+% ASEN 2012
+% Created 11/27/16
+% Modified 12/2/16
+% Written by 9327010bd02f
+% 1:Purpose
+% Numerically integrating given differential functions in order to determine
+% bottle rocket trajectory, using a verification case to check this
+% integration, determining the parameter most dependended upon, and forming
+% a set of parameters launching a rocket to within 1 m of 85 m
+% Input:
+% none at time of running, Verification case inputs already in code
+% Output:
+% Plots of verification case unaltered and varying with drag
+% coefficient, launch angle, initial air pressure, and initial water volume.
+% Peak height and landing distance of verification case.
+% Change of peak height and landing distance with 10% change in parameters
+% Parameters necessary for 85 m goal
+% 4: Assumptions
+% Isentropic flow from bottle throughout file
 
 clear all;
 close all;
 %% Calling Verification case function
-[ t,vals ] = verificationcase( 0.5,0.001, 50, 45, 5);
+[ t,vals ] = verificationcase(0.5, 0.001, 50, 45, 5);
 %% Sketch: Plots of Unaltered Verification Case
 %Plot initially used as sketch to verify code before advancing
 %Percentage change calculated at each step to identify most sensitive
@@ -130,10 +130,10 @@ finishe = valse(find(valse(:,2)<0.1,1),1);
 finishf = valsf(find(valsf(:,2)<0.1,1),1);
 changee = ((finishe-finish)/finish)*100;
 changef = ((finishf-finish)/finish)*100;
-peake = max(valse(:,2));
-peakf = max(valsf(:,2));
-dpe = ((peake-peak)/peak)*100;
-dpf = ((peakf-peak)/peak)*100;
+peake   = max(valse(:,2));
+peakf   = max(valsf(:,2));
+dpe     = ((peake-peak)/peak)*100;
+dpf     = ((peakf-peak)/peak)*100;
 hold off
 %Outputs
 fprintf('\nA 10%% decrease in initial water volume gives a %.3f change in final distance \n',changee);
@@ -153,18 +153,18 @@ plot(valsg(:,1),valsg(:,2));
 plot(valsh(:,1),valsh(:,2));
 %Labeling
 legend('Gage Pressure = 50','Gage Pressure = 45','Gage Pressure = 55');
-title ('Altered Verification Case - Initial Air Pressure')
-xlabel ('Horizontal Position')
-ylabel ('Vertical Position')
+title('Altered Verification Case - Initial Air Pressure')
+xlabel('Horizontal Position')
+ylabel('Vertical Position')
 %Percentage change from unmodified verification case
 finishg = valsg(find(valsg(:,2)<0.1,1),1);
 finishh = valsh(find(valsh(:,2)<0.1,1),1);
 changeg = ((finishg-finish)/finish)*100;
 changeh = ((finishh-finish)/finish)*100;
-peakg = max(valsg(:,2));
-peakh = max(valsh(:,2));
-dpg = ((peakg-peak)/peak)*100;
-dph = ((peakh-peak)/peak)*100;
+peakg   = max(valsg(:,2));
+peakh   = max(valsh(:,2));
+dpg     = ((peakg-peak)/peak)*100;
+dph     = ((peakh-peak)/peak)*100;
 hold off
 %Outputs
 fprintf('\nA 10%% decrease in initial air pressure gives a %.3f change in final distance \n',changeg);
